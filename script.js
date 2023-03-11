@@ -7,7 +7,6 @@ const eraseBtn=document.querySelector('.eraseBtn');
 const colorPicker=document.querySelector('#favcolor');
 
 let currentColor="#333"; // by default #333 but can changed using color picker
-let currentMode="color"; // 3 modes: color , rainbow and eraser
 
 let nbOfDivs=0; // to be drawn in the box
 let heightWidth=0; // size of each of these divs
@@ -16,7 +15,7 @@ let rangeval=0; // level of slider
 // gets the range(ex: 16 x 16), clear drawing, gets new nb of divs with their sizes 
 function gridNumberAndSize(){
     rangeval=range.value;
-    rangeText.textContent=`${rangeval} X ${rangeval}`;
+    rangeText.textContent=`${rangeval} x ${rangeval}`;
 
     sideRightContainer.textContent='';
 
@@ -39,7 +38,7 @@ for(let i=0; i<256; i++){
 }
 
 // if user chooses to change the range the new grid gets drawn 
-range.onclick = () => {
+range.oninput = () => {
     
     gridNumberAndSize(); 
    
@@ -60,16 +59,11 @@ range.onclick = () => {
 };
 
 
-
-
-
 // buttons event listener
 
 // ColorPicker circle: (color chosen used in the color mode)
-function getColor(){
-    currentColor=colorPicker.value;
-}
-colorPicker.addEventListener('mouseout',getColor);
+
+colorPicker.addEventListener('mouseout',() => currentColor=colorPicker.value);
 
 
 // color mode button:
@@ -77,6 +71,7 @@ colorPicker.addEventListener('mouseout',getColor);
 function colorMode(){
     currentColor=colorPicker.value;
     colorModeBtn.style.cssText = "background-color:#333333;color:white;";
+    eraseBtn.style.cssText = "background-color:#ededed;color:#333;";
 }
 colorModeBtn.addEventListener('click',colorMode);
 
@@ -84,6 +79,7 @@ colorModeBtn.addEventListener('click',colorMode);
 function erase(){
     currentColor="white";
     eraseBtn.style.cssText = "background-color:#333333;color:white;";
+    colorModeBtn.style.cssText = "background-color:#ededed;color:#333;";
 } 
 eraseBtn.addEventListener('click',erase);
 
