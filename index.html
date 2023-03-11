@@ -12,22 +12,23 @@
 <body>
     <h1>Etch-a-sketch</h1>
     <div class="container">
-        <div class="sideLeft">
-              
+        <div class="sideLeft">    
             <input type="color" id="favcolor" name="favcolor" value="#333333">
-            <button>Color mode</button>
-            <button>Rainbow mode</button>
-            <button>Eraser</button>
-            <button>Clear</button>
+            <button class="colorModeBtn">Color mode</button>
+            <!--<button>Rainbow mode</button>-->
+            <button class="eraseBtn">Eraser mode</button>
+            <button class="clearBtn">Clear</button>
             <div class="range" style="text-align: center;">
-            <p><span id="demo">16</span> X <span id="demo">16</span></p>
+            <p><span class="demo">16 X 16</span></p>
             <input type="range" min="1" max="64" value="16" class="slider" id="myRange">
             </div>
         </div>
+
         <div class="sideRight">
 
         </div>
     </div>
+    <!--
     <footer>
    
     <p>Copyright © <script>document.write(new Date().getFullYear())</script>&nbsp; Ali haidar &nbsp;
@@ -37,5 +38,6 @@
     </a>
     
     </footer>
+    -->
 </body>
 </html>
