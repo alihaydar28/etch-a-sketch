@@ -30,11 +30,5 @@ jobs:
       - name: Run tests
         run: echo "No tests specified"
 
-      - name: Build Docker image
-        run: |
-          docker build -t image1:latest .
-          echo ${{ secrets.AWS_ACCESS_KEY_ID }} | docker login --username AWS --password-stdin 265072753329.dkr.ecr.eu-central-1.amazonaws.com
-          docker tag image1:latest 265072753329.dkr.ecr.eu-central-1.amazonaws.com/distributed:image1
-          docker push 265072753329.dkr.ecr.eu-central-1.amazonaws.com/distributed:image1
         env:
           AWS_REGION: eu-central-1
