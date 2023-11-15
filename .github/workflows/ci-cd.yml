@@ -13,6 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Display directory content
+        run: ls -R
+
+      - name: Show npm version
+        run: npm --version
+
+      - name: Show npm test script
+        run: npm run-script test --dry-run
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -26,7 +35,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t your-docker-image-name .
+          docker build -t ImageTest
           echo ${{ secrets.AWS_ACCESS_KEY_ID }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
           docker tag your-docker-image-name:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/your-docker-image-name:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/your-docker-image-name:latest
