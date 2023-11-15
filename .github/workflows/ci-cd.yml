@@ -12,11 +12,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          # Set the Node.js version to 16
+          node-version: '16'
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
+
+      - name: Set up working directory
+        run: cd your-subdirectory-name
 
       - name: Install dependencies
         run: npm install
@@ -32,4 +38,3 @@ jobs:
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dockerImage:latest
         env:
           AWS_REGION: ${{ secrets.AWS_REGION }}
-
